@@ -65,7 +65,7 @@ import {
 	mapLegacyConnectionsToCanvasConnections,
 	mapLegacyConnectionToCanvasConnection,
 	parseCanvasConnectionHandleString,
-} from '@/utils/canvasUtilsV2';
+} from '@/utils/canvasUtils';
 import * as NodeViewUtils from '@/utils/nodeViewUtils';
 import {
 	CONFIGURABLE_NODE_SIZE,
@@ -393,6 +393,10 @@ export function useCanvasOperations({ router }: { router: ReturnType<typeof useR
 
 	function setNodeActiveByName(name: string) {
 		ndvStore.activeNodeName = name;
+	}
+
+	function clearNodeActive() {
+		ndvStore.activeNodeName = null;
 	}
 
 	function setNodeParameters(id: string, parameters: Record<string, unknown>) {
@@ -1988,6 +1992,7 @@ export function useCanvasOperations({ router }: { router: ReturnType<typeof useR
 		revertUpdateNodePosition,
 		setNodeActive,
 		setNodeActiveByName,
+		clearNodeActive,
 		setNodeSelected,
 		toggleNodesDisabled,
 		revertToggleNodeDisabled,
